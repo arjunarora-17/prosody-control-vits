@@ -118,7 +118,7 @@ def train_and_evaluate(rank, epoch, hps, nets, optims, schedulers, scaler, loade
 
     with autocast(enabled=hps.train.fp16_run):
       y_hat, l_length, attn, ids_slice, x_mask, z_mask,\
-      (z, z_p, m_p, logs_p, m_q, logs_q) = net_g(x, x_lengths, spec, spec_lengths)
+      (z, z_p, m_p, logs_p, m_q, logs_q) = net_g(x, x_lengths, spec, spec_lengths, y, y_lengths)
 
       mel = spec_to_mel_torch(
           spec, 
@@ -223,7 +223,7 @@ def evaluate(hps, generator, eval_loader, writer_eval):
         y = y[:1]
         y_lengths = y_lengths[:1]
         break
-      y_hat, attn, mask, *_ = generator.infer(x, x_lengths, max_len=1000)
+      y_hat, attn, mask, *_ = generator.infer(x, x_lengths, y, y_lengths max_len=1000)
       y_hat_lengths = mask.sum([1,2]).long() * hps.data.hop_length
 
       mel = spec_to_mel_torch(

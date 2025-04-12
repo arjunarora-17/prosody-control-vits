@@ -13,6 +13,132 @@ from torch.nn import Conv1d, ConvTranspose1d, AvgPool1d, Conv2d
 from torch.nn.utils import weight_norm, remove_weight_norm, spectral_norm
 from commons import init_weights, get_padding
 
+############################ PROSODY EMBEDDING STARTS ##########################
+
+import torch
+import torch.nn as nn
+from transformers import Wav2Vec2Processor
+from transformers import Wav2Vec2Model
+from transformers import AutoConfig
+from transformers.models.wav2vec2.modeling_wav2vec2 import Wav2Vec2PreTrainedModel
+
+class EmotionModel(Wav2Vec2PreTrainedModel):
+    r"""Speech emotion classifier."""
+    def __init__(self, config):
+        super().__init__(config)
+        self.config = config
+        self.wav2vec2 = Wav2Vec2Model(config)
+
+    def forward(self,input_values, attention_mask=None):
+        return self.wav2vec2(input_values, attention_mask= attention_mask)
+
+class MaskedAvgPool(nn.Module):
+    def forward(self, x, mask=None):
+        if mask is None:
+            return x.mean(dim=1)
+        mask = mask.unsqueeze(-1).float()
+        return (x * mask).sum(dim=1) / mask.sum(dim=1)
+
+class GlobalEmotionEncoder(nn.Module):
+    def __init__(self, input_dim, hidden_dim=256, output_dim=192):
+        super().__init__()
+        self.linear = nn.Linear(input_dim, hidden_dim)
+        self.relu = nn.ReLU()
+        self.lstm = nn.LSTM(hidden_dim, hidden_dim, batch_first=True)
+        self.mask_avg = MaskedAvgPool()
+        self.output_layer = nn.Linear(hidden_dim, output_dim)
+
+    def forward(self, x, mask=None):
+        x = self.relu(self.linear(x))
+        x, _ = self.lstm(x)
+        x = self.mask_avg(x, mask)
+        x = self.output_layer(x)
+        return x
+
+class LocalEmotionEncoder(nn.Module):
+    def __init__(self, input_dim, output_dim=192):
+        super().__init__()
+        self.linear1 = nn.Linear(input_dim, output_dim)
+        self.avg_pool = nn.AvgPool1d(kernel_size=3, stride=1, padding=1)
+        self.linear2 = nn.Linear(output_dim, output_dim)
+
+    def forward(self, x):
+        x = self.linear1(x)
+        x = x.transpose(1, 2)
+        x = self.avg_pool(x)
+        x = x.transpose(1, 2)
+        x = self.linear2(x)
+        return x
+
+class AttentionModule(nn.Module):
+    def __init__(self, dim, global_pool=False):
+        super().__init__()
+        self.global_pool = global_pool
+        self.conv1 = nn.Conv1d(dim, dim, kernel_size=3, padding=1)
+        self.bn1 = nn.BatchNorm1d(dim)
+        self.relu = nn.ReLU()
+        self.conv2 = nn.Conv1d(dim, dim, kernel_size=3, padding=1)
+
+    def forward(self, x):
+        if x.dim() == 2:
+            x = x.unsqueeze(-1)
+        else:
+            x = x.transpose(1, 2)
+        if self.global_pool:
+            x = torch.mean(x, dim=2, keepdim=True)
+        x = self.conv1(x)
+        x = self.bn1(x)
+        x = self.relu(x)
+        x = self.conv2(x)
+        x = x.squeeze(-1)
+        return x
+
+class ProsodyNet(nn.Module):
+     def __init__(self, model_name="audeering/wav2vec2-large-robust-12-ft-emotion-msp-dim", embed_dim=192, device='cpu'):
+        super().__init__()
+
+        # Load processor and config
+        self.processor = Wav2Vec2Processor.from_pretrained(model_name)
+        config = AutoConfig.from_pretrained(model_name)
+
+        # Load pretrained emotion model
+        self.wav2vec = EmotionModel.from_pretrained(model_name, config=config).to(device)
+        self.wav2vec.eval()
+        for param in self.wav2vec.parameters():
+            param.requires_grad = False
+
+        feature_dim = config.hidden_size  # 1024 for this model
+
+        self.global_encoder = GlobalEmotionEncoder(feature_dim, output_dim=embed_dim)
+        self.local_encoder = LocalEmotionEncoder(feature_dim, output_dim=embed_dim)
+
+        self.global_attn = AttentionModule(embed_dim, global_pool=True)
+        self.local_attn = AttentionModule(embed_dim, global_pool=False)
+
+     def forward(self, waveforms, attention_mask=None):
+        with torch.no_grad():
+            features = self.wav2vec(waveforms, attention_mask = attention_mask).last_hidden_state
+
+        X = self.global_encoder(features)
+        Y = self.local_encoder(features)
+
+        # Broadcast X to match Y's shape if needed
+        X_broadcasted = X.unsqueeze(1)
+        S = X_broadcasted + Y
+
+        A_g = self.global_attn(S)
+        A_l = self.local_attn(S)
+        A_g = A_g.unsqueeze(-1)
+        alpha = torch.sigmoid(A_g + A_l)
+        alpha = alpha.permute(0,2,1)
+        # Weighted fusion
+        Z = alpha * X_broadcasted + (1 - alpha) * Y
+        return Z
+
+############################ PROSODY EMBEDDING ENDS ##########################
+
+
+
 
 class StochasticDurationPredictor(nn.Module):
   def __init__(self, in_channels, filter_channels, kernel_size, p_dropout, n_flows=4, gin_channels=0):
@@ -153,6 +279,7 @@ class TextEncoder(nn.Module):
     self.p_dropout = p_dropout
 
     self.emb = nn.Embedding(n_vocab, hidden_channels)
+    self.prosody_emb = ProsodyNet()
     nn.init.normal_(self.emb.weight, 0.0, hidden_channels**-0.5)
 
     self.encoder = attentions.Encoder(
@@ -164,12 +291,37 @@ class TextEncoder(nn.Module):
       p_dropout)
     self.proj= nn.Conv1d(hidden_channels, out_channels * 2, 1)
 
-  def forward(self, x, x_lengths):
-    x = self.emb(x) * math.sqrt(self.hidden_channels) # [b, t, h]
+  def forward(self, x, x_lengths, wav, wav_length):
+    # Calculating emotional embedding
+    # [B, T_wav]
+    wav = wav.squeeze(1)
+    max_len = wav.size(1)
+    attention_mask = torch.arange(max_len, device=wav.device).unsqueeze(0) < wav_length.unsqueeze(1)
+    # [B, T_audio, H]
+    emotion_emb = self.prosody_emb(wav, attention_mask=attention_mask)
+    # [B, T_text, H]
+    x = self.emb(x) * math.sqrt(self.hidden_channels)
+    # interpolate emotion_emb to match T_text
+    emotion_emb_resized = F.interpolate(
+        emotion_emb.permute(0, 2, 1),  # [B, H, T_audio]
+        size=x.size(1),
+        mode='linear',
+        align_corners=True
+    ).permute(0, 2, 1)  # [B, T_text, H]
+    x = x + emotion_emb_resized # [B, T_text, H]
     x = torch.transpose(x, 1, -1) # [b, h, t]
+    # print("Inside forward of TextEncder")
+    # print("Inputs : x - ", x.shape)
+    # print("Inputs : x_lengths - ",x_lengths )
+    # print("Inputs : wav - ", wav.shape)
+    # print("Inputs : wav_length - ", wav_length)
+    # print("Inputs : emotion_emb - ", emotion_emb.shape)
+    # print("Exited forward of TextEncder")
+
     x_mask = torch.unsqueeze(commons.sequence_mask(x_lengths, x.size(2)), 1).to(x.dtype)
 
     x = self.encoder(x * x_mask, x_mask)
+    
     stats = self.proj(x) * x_mask
 
     m, logs = torch.split(stats, self.out_channels, dim=1)
@@ -456,9 +608,9 @@ class SynthesizerTrn(nn.Module):
     if n_speakers > 1:
       self.emb_g = nn.Embedding(n_speakers, gin_channels)
 
-  def forward(self, x, x_lengths, y, y_lengths, sid=None):
+  def forward(self, x, x_lengths, y, y_lengths,wav, wav_lengths, sid=None):
 
-    x, m_p, logs_p, x_mask = self.enc_p(x, x_lengths)
+    x, m_p, logs_p, x_mask = self.enc_p(x, x_lengths, wav, wav_lengths)
     if self.n_speakers > 0:
       g = self.emb_g(sid).unsqueeze(-1) # [b, h, 1]
     else:
@@ -496,8 +648,8 @@ class SynthesizerTrn(nn.Module):
     o = self.dec(z_slice, g=g)
     return o, l_length, attn, ids_slice, x_mask, y_mask, (z, z_p, m_p, logs_p, m_q, logs_q)
 
-  def infer(self, x, x_lengths, sid=None, noise_scale=1, length_scale=1, noise_scale_w=1., max_len=None):
-    x, m_p, logs_p, x_mask = self.enc_p(x, x_lengths)
+  def infer(self, x, x_lengths, y, y_lengths, sid=None, noise_scale=1, length_scale=1, noise_scale_w=1., max_len=None):
+    x, m_p, logs_p, x_mask = self.enc_p(x, x_lengths, y, y_lengths)
     if self.n_speakers > 0:
       g = self.emb_g(sid).unsqueeze(-1) # [b, h, 1]
     else:
