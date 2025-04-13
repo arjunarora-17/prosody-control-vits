@@ -71,6 +71,13 @@ def run(rank, n_gpus, hps):
         hps.data.filter_length // 2 + 1,
         hps.train.segment_size // hps.data.hop_length,
         **hps.model).to(device)
+
+    # Load pretrained checkpoint dict for kaggle
+    ckpt_dict = torch.load("/kaggle/input/pretrained_vits_ljs/pytorch/default/1/pretrained_ljs.pth", map_location=device)
+
+    # Filter and load matching weights only into net_g
+    net_g.load_state_dict(ckpt_dict["model"], strict=False)
+    
     net_d = MultiPeriodDiscriminator(hps.model.use_spectral_norm).to(device)
 
     optim_g = torch.optim.AdamW(net_g.parameters(), hps.train.learning_rate, betas=hps.train.betas, eps=hps.train.eps)
