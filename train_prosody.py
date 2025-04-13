@@ -211,6 +211,7 @@ def train_and_evaluate(rank, epoch, hps, nets, optims, schedulers, scaler, loade
     global_step += 1
   
   if rank == 0:
+    print('====> Epoch: {}'.format(epoch)) # For kaggle Notebook
     logger.info('====> Epoch: {}'.format(epoch))
 
  
