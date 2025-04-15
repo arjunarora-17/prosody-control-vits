@@ -1,100 +1,49 @@
-Prosody_Dataset/amused_449-476_0457.wav|What I saw I could not at first believe.
-Prosody_Dataset/amused_449-476_0458.wav|The stout wood was crushed like an eggshell.
-Prosody_Dataset/amused_449-476_0459.wav|There's too much of the schoolboy in me.
-Prosody_Dataset/amused_449-476_0460.wav|I had forgotten their existence.
-Prosody_Dataset/amused_449-476_0461.wav|Ah, we were very close together in that moment.
-Prosody_Dataset/amused_449-476_0462.wav|But she swung obediently on her heel into the wind.
-Prosody_Dataset/amused_449-476_0463.wav|They are his tongue, by which he makes his knowledge articulate.
-Prosody_Dataset/amused_449-476_0464.wav|Between the rush of the cascades, streaks of rust showed everywhere.
-Prosody_Dataset/amused_449-476_0465.wav|He'll never do a tap of work the whole Voyage.
-Prosody_Dataset/amused_449-476_0466.wav|Captain West may be a Samurai, but he is also human.
-Prosody_Dataset/amused_449-476_0467.wav|And so early in the voyage, too.
-Prosody_Dataset/amused_449-476_0468.wav|In the matter of curry she is a sheer genius.
-Prosody_Dataset/amused_449-476_0469.wav|The eastern heavens were equally spectacular.
-Prosody_Dataset/amused_449-476_0470.wav|He spat it out like so much venom.
-Prosody_Dataset/amused_449-476_0471.wav|I saw Mr Pike nod his head grimly and sarcastically.
-Prosody_Dataset/amused_449-476_0472.wav|He is too keenly intelligent, too sharply sensitive, successfully to endure.
-Prosody_Dataset/amused_449-476_0473.wav|The night was calm and snowy.
-Prosody_Dataset/amused_449-476_0474.wav|I sailed third mate in the little Vampire before you were born.
-Prosody_Dataset/amused_449-476_0475.wav|His outstretched arm dropped to his side, and he paused.
-Prosody_Dataset/amused_449-476_0476.wav|At this moment I felt a stir at my shoulder.
-Prosody_Dataset/anger_505-532_0512.wav|No, it is a palace, wherein there are many servants.
-Prosody_Dataset/anger_505-532_0513.wav|We must give ourselves and not our money alone.
-Prosody_Dataset/anger_505-532_0514.wav|We are consumed in our own flesh-pots.
-Prosody_Dataset/anger_505-532_0515.wav|But here amongst ourselves let us speak out.
-Prosody_Dataset/anger_505-532_0516.wav|Also, there was awe in their faces.
-Prosody_Dataset/anger_505-532_0517.wav|Out of abstractions Ernest had conjured a vision and made them see it.
-Prosody_Dataset/anger_505-532_0518.wav|Illuminating oil was becoming all profit.
-Prosody_Dataset/anger_505-532_0519.wav|Such an act was in direct violation of the laws of the land.
-Prosody_Dataset/anger_505-532_0520.wav|He was fond of quoting a fragment from a certain poem.
-Prosody_Dataset/anger_505-532_0521.wav|Without them he could not run his empire.
-Prosody_Dataset/anger_505-532_0522.wav|For such countries nothing remained but reorganization.
-Prosody_Dataset/anger_505-532_0523.wav|They could not continue their method of producing surpluses.
-Prosody_Dataset/anger_505-532_0524.wav|At once would be instituted a dozen cooperative commonwealth states.
-Prosody_Dataset/anger_505-532_0526.wav|Nowhere did the raw earth appear.
-Prosody_Dataset/anger_505-532_0527.wav|The lush vegetation of that sheltered spot make a natural shield.
-Prosody_Dataset/anger_505-532_0528.wav|Men who endure it, call it living death.
-Prosody_Dataset/anger_505-532_0529.wav|As I say, he had tapped the message very rapidly.
-Prosody_Dataset/anger_505-532_0530.wav|Ask him, I laughed, then turned to Pasquini.
-Prosody_Dataset/anger_505-532_0531.wav|In what bucolic school of fence he had been taught was beyond imagining.
-Prosody_Dataset/anger_505-532_0532.wav|May drought destroy your crops.
-Prosody_Dataset/disgust_533-560_0541.wav|The Warden with a quart of champagne.
-Prosody_Dataset/disgust_533-560_0542.wav|Without a doubt, some of them have dinner engagements.
-Prosody_Dataset/disgust_533-560_0543.wav|I had been born with no organic, chemical predisposition toward alcohol.
-Prosody_Dataset/disgust_533-560_0544.wav|He may anticipate the day of his death.
-Prosody_Dataset/disgust_533-560_0545.wav|The Italian rancho was a bachelor establishment.
-Prosody_Dataset/disgust_533-560_0546.wav|I lost my balance and pitched head foremost into the ooze.
-Prosody_Dataset/disgust_533-560_0547.wav|Men like Joe Goose dated existence from drunk to drunk.
-Prosody_Dataset/disgust_533-560_0548.wav|Also, churches and preachers I had never known.
-Prosody_Dataset/disgust_533-560_0549.wav|Do you know that we weigh every pound of coal we burn.
-Prosody_Dataset/disgust_533-560_0550.wav|This also became part of the daily schedule.
-Prosody_Dataset/disgust_533-560_0551.wav|All an appearance can know is mirage.
-Prosody_Dataset/disgust_533-560_0552.wav|Yet he dreams he is immortal, I argue feebly.
-Prosody_Dataset/disgust_533-560_0553.wav|I am writing these lines in Honolulu, Hawaii.
-Prosody_Dataset/disgust_533-560_0554.wav|Jack London, Waikiki Beach, Honolulu, Oahu.
-Prosody_Dataset/disgust_533-560_0555.wav|Jerry was so secure in his nook that he did not roll away.
-Prosody_Dataset/disgust_533-560_0556.wav|Why, he's bought forty pounds of goods from you already.
-Prosody_Dataset/disgust_533-560_0557.wav|The last refugee had passed.
-Prosody_Dataset/disgust_533-560_0558.wav|And the foundation stone of service, in his case, was obedience.
-Prosody_Dataset/disgust_533-560_0559.wav|Peace be unto you and grace before the Lord.
-Prosody_Dataset/disgust_533-560_0560.wav|His mouth opened; words shaped vainly on his lips.
-Prosody_Dataset/neutral_421-448_0428.wav|It was not exactly a deportation.
-Prosody_Dataset/neutral_421-448_0429.wav|Quick was the disappointment in his face, yet smiling was the acquiescence.
-Prosody_Dataset/neutral_421-448_0430.wav|Nevertheless we found ourselves once more in the high seat of abundance.
-Prosody_Dataset/neutral_421-448_0431.wav|Wada and Nakata were in a bit of a funk.
-Prosody_Dataset/neutral_421-448_0433.wav|To her the bridge was tambo, which is the native for taboo.
-Prosody_Dataset/neutral_421-448_0434.wav|A half a case of tobacco was worth three pounds.
-Prosody_Dataset/neutral_421-448_0435.wav|What do you mean by this outrageous conduct.
-Prosody_Dataset/neutral_421-448_0436.wav|But Martin smiled a superior smile.
-Prosody_Dataset/neutral_421-448_0437.wav|By that answer my professional medical prestige stood or fell.
-Prosody_Dataset/neutral_421-448_0438.wav|At sea, Monday, March 16, 1908.
-Prosody_Dataset/neutral_421-448_0439.wav|At sea, Wednesday, March 18, 1908.
-Prosody_Dataset/neutral_421-448_0440.wav|Yes, sir, I corrected.
-Prosody_Dataset/neutral_421-448_0441.wav|Violent life and athletic sports had never appealed to me.
-Prosody_Dataset/neutral_421-448_0442.wav|You live on an income which your father earned.
-Prosody_Dataset/neutral_421-448_0443.wav|He was worth nothing to the world.
-Prosody_Dataset/neutral_421-448_0444.wav|Then you don't believe in altruism.
-Prosody_Dataset/neutral_421-448_0445.wav|The creative joy, I murmured.
-Prosody_Dataset/neutral_421-448_0446.wav|He deluged me, overwhelmed me with argument.
-Prosody_Dataset/neutral_421-448_0447.wav|Ah, it is growing dark and darker.
-Prosody_Dataset/neutral_421-448_0448.wav|I was Hump, cabin boy on the schooner Ghost.
-Prosody_Dataset/sleepiness_477-504_0482.wav|And their chief virtue lies in that they will never wear out.
-Prosody_Dataset/sleepiness_477-504_0483.wav|Beyond dispute, Corry Hutchinson had married Mabel Holmes.
-Prosody_Dataset/sleepiness_477-504_0485.wav|Each insult added to the value of the claim.
-Prosody_Dataset/sleepiness_477-504_0486.wav|For the rest, he was a mere automaton.
-Prosody_Dataset/sleepiness_477-504_0488.wav|Their love burned with increasing brightness.
-Prosody_Dataset/sleepiness_477-504_0489.wav|They were artists, not biologists.
-Prosody_Dataset/sleepiness_477-504_0490.wav|Both Johnny and his mother shuffled their feet as they walked.
-Prosody_Dataset/sleepiness_477-504_0491.wav|And as in denial of guilt, the one-legged boy replied.
-Prosody_Dataset/sleepiness_477-504_0492.wav|Burnt out like the crater of a volcano.
-Prosody_Dataset/sleepiness_477-504_0493.wav|The boy, O'Brien, was specially maltreated.
-Prosody_Dataset/sleepiness_477-504_0494.wav|O'Brien took off his coat and bared his right arm.
-Prosody_Dataset/sleepiness_477-504_0495.wav|He bore no grudges and had few enemies.
-Prosody_Dataset/sleepiness_477-504_0496.wav|And Tom King patiently endured.
-Prosody_Dataset/sleepiness_477-504_0497.wav|King took every advantage he knew.
-Prosody_Dataset/sleepiness_477-504_0498.wav|The lines were now very taut.
-Prosody_Dataset/sleepiness_477-504_0499.wav|And right there I saw and knew it all.
-Prosody_Dataset/sleepiness_477-504_0500.wav|Who the devil gave it to you to be judge and jury.
-Prosody_Dataset/sleepiness_477-504_0501.wav|You're joking me, sir, the other managed to articulate.
-Prosody_Dataset/sleepiness_477-504_0502.wav|Anything unusual or abnormal was sufficient to send a fellow to Molokai.
-Prosody_Dataset/sleepiness_477-504_0503.wav|His beady black eyes saw bargains where other men saw bankruptcy.
+audio_id\amused_57-84_0071.wav|What was the object of your little sensation.
+audio_id\amused_57-84_0072.wav|But who was Eileen's double.
+audio_id\amused_57-84_0073.wav|The promoter's eyes were heavy, with little puffy bags under them.
+audio_id\amused_57-84_0074.wav|And now, down there, Eileen was waiting for him.
+audio_id\amused_57-84_0075.wav|There has been a change, she interrupted him.
+audio_id\amused_57-84_0076.wav|The gray eyes faltered; the flush deepened.
+audio_id\amused_57-84_0077.wav|It is the fire, partly, she said.
+audio_id\amused_57-84_0078.wav|Then, and at supper, he tried to fathom her.
+audio_id\amused_57-84_0079.wav|It was a large canoe.
+audio_id\amused_57-84_0080.wav|What if Jeanne failed him.
+audio_id\anger_253-280_0267.wav|Eli Harding asked, as Shunk started to follow.
+audio_id\anger_253-280_0268.wav|Now go ahead and tell me in a straightforward way what has happened.
+audio_id\anger_253-280_0269.wav|That's where they cut off the Scottish Chiefs and killed all hands.
+audio_id\anger_253-280_0270.wav|And after the bath a shave would not be bad.
+audio_id\anger_253-280_0271.wav|Now please give a plain statement of what occurred.
+audio_id\anger_253-280_0272.wav|You can take a vacation on pay.
+audio_id\anger_253-280_0273.wav|They are big trees and require plenty of room.
+audio_id\anger_253-280_0275.wav|There are no kiddies and half grown youths among them.
+audio_id\anger_253-280_0276.wav|Oolong Atoll was one hundred and forty miles in circumference.
+audio_id\anger_253-280_0277.wav|McCoy found a stifling, poisonous atmosphere in the pent cabin.
+audio_id\disgust_85-112_0104.wav|She was sleeping under his protection as sweetly as a child.
+audio_id\disgust_85-112_0105.wav|Only, it is so wonderful, so almost impossible to believe.
+audio_id\disgust_85-112_0106.wav|The emotion which she had suppressed burst forth now in a choking sob.
+audio_id\disgust_85-112_0107.wav|If you only could know how I thank you.
+audio_id\disgust_85-112_0108.wav|He waded into the edge of the water and began scrubbing himself.
+audio_id\disgust_85-112_0109.wav|Do you know that you are shaking my confidence in you.
+audio_id\disgust_85-112_0110.wav|Much, replied Jeanne, as tersely.
+audio_id\disgust_85-112_0111.wav|Instead, he joined her; and they ate like two hungry children.
+audio_id\disgust_85-112_0112.wav|He was wounded in the arm.
+audio_id\neutral_197-364_0266.wav|They handled two men already, both grub-thieves.
+audio_id\neutral_197-364_0267.wav|Eli Harding asked, as Shunk started to follow.
+audio_id\neutral_197-364_0268.wav|Now go ahead and tell me in a straightforward way what has happened.
+audio_id\neutral_197-364_0269.wav|That's where they cut off the Scottish Chiefs and killed all hands.
+audio_id\neutral_197-364_0270.wav|And after the bath a shave would not be bad.
+audio_id\neutral_197-364_0271.wav|Now please give a plain statement of what occurred.
+audio_id\neutral_197-364_0272.wav|You can take a vacation on pay.
+audio_id\neutral_197-364_0273.wav|They are big trees and require plenty of room.
+audio_id\neutral_197-364_0274.wav|And Raoul listened again to the tale of the house.
+audio_id\neutral_197-364_0275.wav|There are no kiddies and half grown youths among them.
+audio_id\sleepiness_253-280_0265.wav|The discovery seemed to have been made on the spur of the moment.
+audio_id\sleepiness_253-280_0266.wav|They handled two men already, both grub-thieves.
+audio_id\sleepiness_253-280_0267.wav|Eli Harding asked, as Shunk started to follow.
+audio_id\sleepiness_253-280_0268.wav|Now go ahead and tell me in a straightforward way what has happened.
+audio_id\sleepiness_253-280_0269.wav|That's where they cut off the Scottish Chiefs and killed all hands.
+audio_id\sleepiness_253-280_0270.wav|And after the bath a shave would not be bad.
+audio_id\sleepiness_253-280_0271.wav|Now please give a plain statement of what occurred.
+audio_id\sleepiness_253-280_0272.wav|You can take a vacation on pay.
+audio_id\sleepiness_253-280_0273.wav|They are big trees and require plenty of room.
+audio_id\sleepiness_253-280_0274.wav|And Raoul listened again to the tale of the house.
