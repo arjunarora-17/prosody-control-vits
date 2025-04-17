@@ -1,58 +1,81 @@
-# VITS: Conditional Variational Autoencoder with Adversarial Learning for End-to-End Text-to-Speech
+# Prosody Control VITS: Audio Generation Samples
 
-### Jaehyeon Kim, Jungil Kong, and Juhee Son
+This repository showcases the performance of our **Prosody-Controlled VITS** model in comparison to the baseline **SOTA VITS** model. Below are various evaluation scenarios with audio samples.
 
-In our recent [paper](https://arxiv.org/abs/2106.06103), we propose VITS: Conditional Variational Autoencoder with Adversarial Learning for End-to-End Text-to-Speech.
+---
 
-Several recent end-to-end text-to-speech (TTS) models enabling single-stage training and parallel sampling have been proposed, but their sample quality does not match that of two-stage TTS systems. In this work, we present a parallel end-to-end TTS method that generates more natural sounding audio than current two-stage models. Our method adopts variational inference augmented with normalizing flows and an adversarial training process, which improves the expressive power of generative modeling. We also propose a stochastic duration predictor to synthesize speech with diverse rhythms from input text. With the uncertainty modeling over latent variables and the stochastic duration predictor, our method expresses the natural one-to-many relationship in which a text input can be spoken in multiple ways with different pitches and rhythms. A subjective human evaluation (mean opinion score, or MOS) on the LJ Speech, a single speaker dataset, shows that our method outperforms the best publicly available TTS systems and achieves a MOS comparable to ground truth.
+## 🔈 Reference Audios (Original)
 
-Visit our [demo](https://jaywalnut310.github.io/vits-demo/index.html) for audio samples.
+These audios serve as reference samples used to guide the prosody of the generated outputs.
 
-We also provide the [pretrained models](https://drive.google.com/drive/folders/1ksarh-cJf3F5eKJjLVWY0X1j1qsQqiS2?usp=sharing).
-
-** Update note: Thanks to [Rishikesh (ऋषिकेश)](https://github.com/jaywalnut310/vits/issues/1), our interactive TTS demo is now available on [Colab Notebook](https://colab.research.google.com/drive/1CO61pZizDj7en71NQG_aqqKdGaA_SaBf?usp=sharing).
-
-<table style="width:100%">
-  <tr>
-    <th>VITS at training</th>
-    <th>VITS at inference</th>
-  </tr>
-  <tr>
-    <td><img src="resources/fig_1a.png" alt="VITS at training" height="400"></td>
-    <td><img src="resources/fig_1b.png" alt="VITS at inference" height="400"></td>
-  </tr>
-</table>
+| Reference Audio | Audio Sample |
+|-----------------|--------------|
+| Reference audio 1          | <audio controls src="Final_Audios/ref/1.wav"></audio> |
+| Reference audio 1           | <audio controls src="Final_Audios/ref/2.wav"></audio> |
+| Reference audio 1          | <audio controls src="Final_Audios/ref/3.wav"></audio> |
+| Reference audio 1           | <audio controls src="Final_Audios/ref/4.wav"></audio> |
 
 
-## Pre-requisites
-0. Python >= 3.6
-0. Clone this repository
-0. Install python requirements. Please refer [requirements.txt](requirements.txt)
-    1. You may need to install espeak first: `apt-get install espeak`
-0. Download datasets
-    1. Download and extract the LJ Speech dataset, then rename or create a link to the dataset folder: `ln -s /path/to/LJSpeech-1.1/wavs DUMMY1`
-    1. For mult-speaker setting, download and extract the VCTK dataset, and downsample wav files to 22050 Hz. Then rename or create a link to the dataset folder: `ln -s /path/to/VCTK-Corpus/downsampled_wavs DUMMY2`
-0. Build Monotonic Alignment Search and run preprocessing if you use your own datasets.
-```sh
-# Cython-version Monotonoic Alignment Search
-cd monotonic_align
-python setup.py build_ext --inplace
+---
 
-# Preprocessing (g2p) for your own datasets. Preprocessed phonemes for LJ Speech and VCTK have been already provided.
-# python preprocess.py --text_index 1 --filelists filelists/ljs_audio_text_train_filelist.txt filelists/ljs_audio_text_val_filelist.txt filelists/ljs_audio_text_test_filelist.txt 
-# python preprocess.py --text_index 2 --filelists filelists/vctk_audio_sid_text_train_filelist.txt filelists/vctk_audio_sid_text_val_filelist.txt filelists/vctk_audio_sid_text_test_filelist.txt
-```
+## 🔁 Comparison of Generated Audios
+
+### ▶️ It's an emergency, Go! Go! Go!
+
+| Description | Audio Sample |
+|-------------|--------------|
+| Reference audio 1       | <audio controls src="Final_Audios/It's%20an%20emergency%2C%20Go%21%20Go%21%20Go%21/1.wav"></audio> |
+| Reference audio 2       | <audio controls src="Final_Audios/It's%20an%20emergency%2C%20Go%21%20Go%21%20Go%21/2.wav"></audio> |
+| Reference audio 3      | <audio controls src="Final_Audios/It's%20an%20emergency%2C%20Go%21%20Go%21%20Go%21/3.wav"></audio> |
+| Reference audio 4       | <audio controls src="Final_Audios/It's%20an%20emergency%2C%20Go%21%20Go%21%20Go%21/4.wav"></audio> |
+| VITS     | <audio controls src="Final_Audios/It's%20an%20emergency%2C%20Go%21%20Go%21%20Go%21/vits.wav"></audio> |
+
+---
+
+### ▶️ We are done here, let's go
+
+| Description | Audio Sample |
+|-------------|--------------|
+| Reference audio 1       | <audio controls src="Final_Audios/We%20are%20done%20here%2C%20let's%20go/1.wav"></audio> |
+| Reference audio 2       | <audio controls src="Final_Audios/We%20are%20done%20here%2C%20let's%20go/2.wav"></audio> |
+| Reference audio 3       | <audio controls src="Final_Audios/We%20are%20done%20here%2C%20let's%20go/3.wav"></audio> |
+| Reference audio 4       | <audio controls src="Final_Audios/We%20are%20done%20here%2C%20let's%20go/4.wav"></audio> |
+| VITS    | <audio controls src="Final_Audios/We%20are%20done%20here%2C%20let's%20go/vits.wav"></audio> |
+
+---
+
+## 🧪 Comparison Sample With Original Audio
+
+### ▶️ I have to be careful of them, as they tear very easily
+
+| Description   | Audio Sample |
+|---------------|--------------|
+| Reference audio 1         | <audio controls src="Final_Audios/I%20have%20to%20be%20careful%20of%20them%2C%20as%20they%20tear%20very%20easily/1.wav"></audio> |
+| Reference audio 2         | <audio controls src="Final_Audios/I%20have%20to%20be%20careful%20of%20them%2C%20as%20they%20tear%20very%20easily/2.wav"></audio> |
+| Reference audio 3         | <audio controls src="Final_Audios/I%20have%20to%20be%20careful%20of%20them%2C%20as%20they%20tear%20very%20easily/3.wav"></audio> |
+| Reference audio 4         | <audio controls src="Final_Audios/I%20have%20to%20be%20careful%20of%20them%2C%20as%20they%20tear%20very%20easily/4.wav"></audio> |
+| VITS      | <audio controls src="Final_Audios/I%20have%20to%20be%20careful%20of%20them%2C%20as%20they%20tear%20very%20easily/vits.wav"></audio> |
+| Original  | <audio controls src="Final_Audios/I%20have%20to%20be%20careful%20of%20them%2C%20as%20they%20tear%20very%20easily/original.wav"></audio> |
 
 
-## Training Exmaple
-```sh
-# LJ Speech
-python train.py -c configs/ljs_base.json -m ljs_base
+---
 
-# VCTK
-python train_ms.py -c configs/vctk_base.json -m vctk_base
-```
+## 📈 Comparison Over Training Iterations
+
+### ▶️ Its bed time, lets go to sleep
 
 
-## Inference Example
-See [inference.ipynb](inference.ipynb)
+| Iteration | Audio Sample |
+|-----------|--------------|
+| 1000      | <audio controls src="Final_Audios/Its%20bed%20time%2C%20lets%20go%20to%20sleep/1000.wav"></audio> |
+| 3000      | <audio controls src="Final_Audios/Its%20bed%20time%2C%20lets%20go%20to%20sleep/3000.wav"></audio> |
+| 6000      | <audio controls src="Final_Audios/Its%20bed%20time%2C%20lets%20go%20to%20sleep/6000.wav"></audio> |
+| 9000      | <audio controls src="Final_Audios/Its%20bed%20time%2C%20lets%20go%20to%20sleep/9000.wav"></audio> |
+| 12000     | <audio controls src="Final_Audios/Its%20bed%20time%2C%20lets%20go%20to%20sleep/12000.wav"></audio> |
+| 15000     | <audio controls src="Final_Audios/Its%20bed%20time%2C%20lets%20go%20to%20sleep/15000.wav"></audio> |
+| VITS      | <audio controls src="Final_Audios/Its%20bed%20time%2C%20lets%20go%20to%20sleep/vits.wav"></audio> |
+
+
+---
+
+Each sample demonstrates how emotional prosody and speaker reference can enhance the expressiveness of synthesized speech using our model.
